@@ -1,3 +1,7 @@
+[![make.fun](https://make.fun/badge/gta6-trophy-guide-01.svg)](https://make.fun/bounty/gta6-trophy-guide-01)
+[![Rank](https://make.fun/badge/gta6-trophy-guide-01/Omar08263/gta6-trophy-guide/rank.svg)](https://make.fun/bounty/gta6-trophy-guide-01)
+[![Reward](https://make.fun/badge/gta6-trophy-guide-01/Omar08263/gta6-trophy-guide/reward.svg)](https://make.fun/bounty/gta6-trophy-guide-01)
+
 # Leonida Platinum — GTA VI Trophy Guide & Tracker
 
 An offline, open-source guide and tracker for all **55 PlayStation 5 trophies** of
