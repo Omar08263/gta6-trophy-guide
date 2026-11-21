@@ -1,7 +1,68 @@
-body { font-family: Arial, sans-serif; margin: 24px; color: #222; }
-header { display: flex; justify-content: space-between; align-items: baseline; }
-.controls { display: flex; gap: 16px; margin: 12px 0; align-items: center; }
-.import input { font-size: 12px; }
-table { border-collapse: collapse; width: 100%; }
-th, td { border-bottom: 1px solid #ddd; padding: 6px 8px; text-align: left; vertical-align: top; white-space: pre-line; }
-th { background: #f2f2f2; }
+/* Leonida Platinum — a warm paper look of our own: cream, ink and one coral accent.
+   No external fonts or images; system serif for titles, system sans for body. */
+* { box-sizing: border-box; }
+body { font-family: Georgia, 'Times New Roman', serif; margin: 0; background: #f6f3ee; color: #1d2129; }
+body, button, input, select { font-family: Georgia, 'Times New Roman', serif; }
+.top { display: flex; gap: 24px; justify-content: space-between; padding: 22px 28px 14px; background: #fffdf8; border-bottom: 3px solid #d24e2a; }
+.top h1 { font-size: 34px; margin: 0 0 6px; letter-spacing: 0.5px; }
+.sub { font-family: Arial, Helvetica, sans-serif; font-size: 14px; color: #4a505c; margin: 0 0 8px; max-width: 640px; line-height: 1.45; }
+.counts { font-family: Arial, Helvetica, sans-serif; font-size: 13px; font-weight: bold; color: #d24e2a; margin: 0; }
+.progress-card { min-width: 280px; background: #1d2129; color: #f6f3ee; border-radius: 12px; padding: 14px 18px; }
+.progress-card .big { font-size: 34px; font-weight: bold; }
+.progress-card .of { font-size: 18px; color: #b9bec8; }
+.bar { height: 10px; background: #3a4150; border-radius: 6px; margin: 8px 0; overflow: hidden; }
+.fill { height: 100%; background: #ff6b4a; width: 0%; transition: width 0.3s; }
+.progress-card p { font-family: Arial, Helvetica, sans-serif; font-size: 12.5px; margin: 4px 0; color: #d6dae1; }
+.tabs { display: flex; gap: 8px; padding: 12px 28px 0; }
+.tabs button { font-family: Arial, Helvetica, sans-serif; font-size: 14px; padding: 9px 16px; border: 1px solid #d8d2c4; background: #fffdf8; border-radius: 8px 8px 0 0; cursor: pointer; border-bottom: none; }
+.tabs button.active { background: #d24e2a; color: #fff; border-color: #d24e2a; font-weight: bold; }
+.toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding: 12px 28px; background: #fffdf8; border-bottom: 1px solid #e3ddd0; }
+.toolbar input[type="search"] { flex: 1 1 220px; min-width: 200px; padding: 8px 10px; font-size: 14px; border: 1px solid #c9c2b2; border-radius: 6px; }
+.toolbar label { font-family: Arial, Helvetica, sans-serif; font-size: 12.5px; color: #4a505c; }
+.toolbar select { padding: 7px; font-size: 13px; border: 1px solid #c9c2b2; border-radius: 6px; background: #fff; }
+.toolbar button, .importBtn { font-family: Arial, Helvetica, sans-serif; font-size: 13px; padding: 8px 12px; border: 1px solid #1d2129; background: #1d2129; color: #fff; border-radius: 6px; cursor: pointer; }
+.importBtn input { display: none; }
+.spacer { flex: 1; }
+main { padding: 16px 28px 30px; }
+.hidden { display: none !important; }
+.columns { display: grid; grid-template-columns: minmax(0, 7fr) minmax(300px, 5fr); gap: 20px; align-items: start; }
+.list-meta { font-family: Arial, Helvetica, sans-serif; font-size: 13px; color: #626a75; margin: 0 0 10px; }
+.trophy-list { list-style: none; margin: 0; padding: 0; }
+.trophy-list li { background: #fff; border: 1px solid #e3ddd0; border-radius: 10px; padding: 10px 12px; margin-bottom: 8px; cursor: pointer; }
+.trophy-list li:hover { border-color: #d24e2a; }
+.trophy-list li.selected { border: 2px solid #d24e2a; background: #fff7f2; }
+.trophy-list li.earned { background: #eef6ec; }
+.row-top { display: flex; align-items: center; gap: 8px; }
+.row-top input { width: 18px; height: 18px; accent-color: #d24e2a; flex: none; }
+.row-top .name { font-weight: bold; font-size: 16px; }
+.badge { font-family: Arial, Helvetica, sans-serif; font-size: 11px; font-weight: bold; text-transform: uppercase; padding: 2px 7px; border-radius: 20px; white-space: nowrap; }
+.badge.platinum { background: #d8e1ea; color: #1d2129; }
+.badge.gold { background: #d4af5a; color: #fff; }
+.badge.silver { background: #aeb6bf; color: #fff; }
+.badge.bronze { background: #b9784c; color: #fff; }
+.flag { font-family: Arial, Helvetica, sans-serif; font-size: 11px; font-weight: bold; color: #b3261e; border: 1px solid #b3261e; border-radius: 20px; padding: 2px 7px; white-space: nowrap; }
+.row-desc { font-size: 14px; color: #4a505c; margin: 6px 0 4px 26px; font-style: italic; }
+.row-guide { font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 1.5; color: #2a2f38; margin: 4px 0 0 26px; }
+.row-meta { font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #626a75; margin: 6px 0 0 26px; }
+.hidden-name { color: #626a75; font-style: italic; }
+.detail { position: sticky; top: 12px; background: #fff; border: 2px solid #d24e2a; border-radius: 14px; padding: 18px; }
+.detail h2 { font-size: 22px; margin: 6px 0 4px; }
+.detail .official { font-size: 14.5px; font-style: italic; color: #4a505c; margin: 4px 0 12px; }
+.detail h3 { font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; color: #d24e2a; margin: 14px 0 6px; }
+.detail p, .detail li { font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 1.55; }
+.detail ol, .detail ul { padding-left: 20px; margin: 4px 0; }
+.detail .facts { font-size: 13px; color: #4a505c; }
+.detail .sources { font-size: 12.5px; color: #626a75; border-top: 1px solid #e3ddd0; padding-top: 10px; }
+.detail .earn-btn { font-size: 14px; padding: 10px 16px; background: #d24e2a; color: #fff; border: none; border-radius: 8px; cursor: pointer; margin-top: 10px; }
+.detail .empty { color: #626a75; }
+.lede { font-family: Arial, Helvetica, sans-serif; font-size: 14.5px; line-height: 1.6; max-width: 860px; }
+.roadmap { max-width: 860px; }
+.roadmap li { background: #fff; border: 1px solid #e3ddd0; border-radius: 10px; padding: 14px 16px; margin-bottom: 10px; }
+.roadmap h3 { margin: 0 0 6px; font-size: 18px; }
+.roadmap p { font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 1.55; margin: 4px 0; }
+.roadmap .stage-progress { font-family: Arial, Helvetica, sans-serif; font-size: 12.5px; font-weight: bold; color: #d24e2a; }
+.view h2 { font-size: 26px; margin: 6px 0 8px; }
+.view h3 { font-size: 18px; }
+.view ul li { font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 1.55; margin-bottom: 6px; }
+footer { padding: 16px 28px 24px; font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #626a75; border-top: 1px solid #e3ddd0; }
+@media (max-width: 900px) { .columns { grid-template-columns: 1fr; } .detail { position: static; } .top { flex-direction: column; } }
